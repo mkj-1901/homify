@@ -11,7 +11,7 @@ const devices = [
 
 const App = () => {
   return (
-    <div className="flex">
+    <div className="flex bg-[#FFF0DC]">
       {/* Sidebar */}
       <Sidebar />
 
