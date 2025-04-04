@@ -3,7 +3,6 @@ import { Menu, Lightbulb, Fan, Thermometer, User, Settings, Info } from "lucide-
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
-<<<<<<< Updated upstream
   const [showIcons, setShowIcons] = useState(false);
 
   const toggleSidebar = () => {
@@ -17,8 +16,6 @@ const Sidebar = () => {
       setTimeout(() => setShowIcons(false), 300);
     }
   };
-=======
->>>>>>> Stashed changes
 
   return (
     <div className={`transition-all duration-300 ${isCollapsed ? "w-0" : "w-72"} h-screen flex flex-col`}>
