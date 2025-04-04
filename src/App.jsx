@@ -23,7 +23,7 @@ const App = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col items-center min-h-screen mt-16 p-6">
         <h1 className="text-4xl font-bold ml-2 w-full">Homify</h1>
-        <p className="text-gray-600 mb-6 mt-3 ml-2 w-full">Guten Morgen, Mayank Jhatu!</p>
+        <p className="text-gray-600 mb-6 mt-3 ml-2 w-full">Guten Morgen, Dr. Ranjana Vyas !</p>
 
         {/* Device Cards - Responsive Grid */}
         <p className="text-gray-800 font-medium text-xl mb-4 mt-3 ml-2 w-full">Control Devices</p>
