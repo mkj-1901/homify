@@ -7,11 +7,11 @@ const Sidebar = () => {
 
   const toggleSidebar = () => {
     if (isCollapsed) {
-      document.querySelector(".absolute.top-4.left-4").style.color = "white";
+      document.querySelector(".absolute.top-4.right-4").style.color = "white";
       setShowIcons(true);
       setIsCollapsed(false);
     } else {
-      document.querySelector(".absolute.top-4.left-4").style.color = "black";
+      document.querySelector(".absolute.top-4.right-4").style.color = "black";
       setIsCollapsed(true);
       setTimeout(() => setShowIcons(false), 300);
     }
@@ -20,13 +20,13 @@ const Sidebar = () => {
   return (
     <div className={`transition-all duration-300 ${isCollapsed ? "w-0" : "w-72"} h-screen flex flex-col`}>
       {/* Menu Button - Always Visible */}
-      <button 
-        onClick={toggleSidebar} 
-        className="absolute top-4 left-4 p-2 rounded-md bg-transparent text-black hover:text-gray-700">
-        <Menu size={28} />
-      </button>
+        <button 
+          onClick={toggleSidebar} 
+          className="absolute top-4 right-4 p-2 rounded-md bg-transparent text-black hover:text-gray-700">
+          <Menu size={28} />
+        </button>
 
-      {/* Sidebar Items - Show only when expanded */}
+        {/* Sidebar Items - Show only when expanded */}
       {showIcons && (
         <div className="h-screen bg-[#131010] text-white flex flex-col p-4">
           <nav className="flex flex-col space-y-4 mt-6 py-6 flex-grow">
