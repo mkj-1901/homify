@@ -1,16 +1,16 @@
 import React from "react";
 import Sidebar from "./components/Sidebar";
 import DeviceCard from "./components/DeviceCard";
-import { Lightbulb, Fan, Thermometer } from "lucide-react";
+import { Lightbulb, Fan, Thermometer, AirVent, Sun} from "lucide-react";
 import { useState } from "react";
 
 const devices = [
   { name: "Living Room Light", icon: Lightbulb, isOn: true },
   { name: "Bedroom Fan", icon: Fan, isOn: false },
-  { name: "AC Unit", icon: Thermometer, isOn: true },
+  { name: "AC Unit", icon: AirVent, isOn: true },
 ];
 const details = [
-  { name: "Light Intensity", icon: Lightbulb, value: null },
+  { name: "Light Intensity", icon: Sun, value: null },
   { name: "Temperature (°C)", icon: Thermometer, value: null },
 ];
 

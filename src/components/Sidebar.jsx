@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Lightbulb, Thermometer, User, Info } from "lucide-react";
+import { Menu, User, Info, List ,Power } from "lucide-react";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -7,11 +7,9 @@ const Sidebar = () => {
 
   const toggleSidebar = () => {
     if (isCollapsed) {
-      document.querySelector(".absolute.top-4.right-4").style.color = "white";
       setShowIcons(true);
       setIsCollapsed(false);
     } else {
-      document.querySelector(".absolute.top-4.right-4").style.color = "black";
       setIsCollapsed(true);
       setTimeout(() => setShowIcons(false), 300);
     }
@@ -52,13 +50,14 @@ const Sidebar = () => {
       {/* Menu Button - Always Visible */}
       <button 
         onClick={toggleSidebar} 
-        className="absolute top-4 right-4 p-2 rounded-md bg-transparent text-black hover:text-gray-700">
+        className="absolute top-4 right-4 p-2 rounded-md bg-transparent text-black hover:text-gray-700 cursor-pointer">
         <Menu size={28} />
       </button>
 
       {/* Sidebar Items - Show only when expanded */}
       {showIcons && (
-        <div className="bg-[#131010b9] text-white flex flex-col rounded-l-2xl rounded-b-2xl">
+        <div className="bg-[#e6faf8a1] text-black
+         flex flex-col rounded-b-2xl rounded-l-2xl mt-13 ml-10 mr-6">
           <nav className="flex flex-col flex-grow">
             <SidebarItem 
               icon={User} 
@@ -67,14 +66,14 @@ const Sidebar = () => {
               onClick={() => handleNavigation("account")} 
             />
             <SidebarItem 
-              icon={Lightbulb} 
+              icon={Power} 
               label="Control Devices" 
               isCollapsed={isCollapsed} 
               onClick={() => handleNavigation("control-devices")} 
             />
             <SidebarItem 
-              icon={Thermometer} 
-              label="See Details" 
+              icon={List} 
+              label="Details" 
               isCollapsed={isCollapsed} 
               onClick={() => handleNavigation("see-details")} 
             />
@@ -94,7 +93,7 @@ const Sidebar = () => {
 // Sidebar Item Component
 const SidebarItem = ({ icon: Icon, label, isCollapsed }) => {
   return (
-    <div className="flex items-center space-x-2 p-2 hover:bg-gray-700 cursor-pointer">
+    <div className="flex items-center space-x-2 p-2 hover:bg-[#658d894c] cursor-pointer">
       <Icon size={24} className="shrink-0"/>
       {!isCollapsed && <span className="text-lg">{label}</span>}
     </div>

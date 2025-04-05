@@ -19,7 +19,7 @@ const DeviceCard = ({ device }) => {
               className="sr-only"
             />
             <div
-              className={`w-10 h-6 bg-gray-300 rounded-full border-2 border-gray-400 shadow-inner transition-colors duration-300 ${
+              className={`w-10 h-6 bg-gray-300 rounded-full shadow-inner transition-colors duration-300 ${
                 isOn ? "bg-green-500 border-green-600" : "bg-gray-300 border-gray-400"
               }`}
             ></div>
