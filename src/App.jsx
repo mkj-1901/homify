@@ -1,63 +1,102 @@
 import React from "react";
 import Sidebar from "./components/Sidebar";
 import DeviceCard from "./components/DeviceCard";
-import { Lightbulb, Fan, Thermometer, AirVent, Sun} from "lucide-react";
-import { useState } from "react";
+import ImageSlider from "./components/ImageSlider";
+import { Lightbulb, Fan, Thermometer, AirVent, Sun } from "lucide-react";
 
+// Device and Environment Data
 const devices = [
   { name: "Living Room Light", icon: Lightbulb, isOn: true },
   { name: "Bedroom Fan", icon: Fan, isOn: false },
   { name: "AC Unit", icon: AirVent, isOn: true },
 ];
+
+const lightIntensity = Math.floor(Math.random() * 100); // 0 to 100 %
+const temperature = (20 + Math.random() * 10).toFixed(1); // 20.0°C to 30.0°C
+
 const details = [
-  { name: "Light Intensity", icon: Sun, value: null },
-  { name: "Temperature (°C)", icon: Thermometer, value: null },
+  { name: "Light Intensity", icon: Sun, value: `${lightIntensity}%` },
+  { name: "Temperature (°C)", icon: Thermometer, value: `${temperature}°C` },
 ];
 
 const App = () => {
   return (
-    <div className="flex bg-[#c3e8d6]" >
+    <div className="flex bg-[#c3e8d6]">
       {/* Sidebar */}
-        <Sidebar
-          onScrollToSection={(sectionId) => {
-            const section = document.getElementById(sectionId);
-            if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
-            }
-          }}
-        />
-        {/* Logo at Top Left */}
+      <Sidebar
+        onScrollToSection={(sectionId) => {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
+      />
+
+      {/* Logo at Top Left */}
       <div className="absolute top-4 left-4">
         <img src="/logo.webp" alt="App Logo" className="h-12 w-12" />
       </div>
-      {/* Main Content Area */}
+
+      {/* Main Content */}
       <div className="flex-1 flex flex-col items-center min-h-screen mt-16 p-6">
         <h1 className="text-4xl font-bold ml-2 w-full">Homify</h1>
-        <p className="text-gray-600 mb-6 mt-3 ml-2 w-full">Guten Morgen, Dr. Ranjana Vyas !</p>
+        <p className="text-gray-600 mb-6 mt-3 ml-2 w-full">
+          Guten Morgen, Dr. Ranjana Vyas!
+        </p>
 
-        {/* Device Cards - Responsive Grid */}
-        <p id="control-devices" className="text-gray-800 font-medium text-xl mb-4 mt-3 ml-2 w-full">Control Devices</p>
+        {/* Image Slider */}
+        <ImageSlider />
+
+        {/* Device Control Section */}
+        <p
+          id="control-devices"
+          className="text-gray-900 font-bold text-xl mb-4 mt-6 ml-2 w-full"
+        >
+          Control Devices
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-4 w-full max-w-4xl">
           {devices.map((device, index) => (
             <DeviceCard key={index} device={device} />
           ))}
         </div>
 
-        {/* Details Cards - Responsive Grid */}
-        <p id="see-details" className="text-gray-800 font-medium text-xl mb-4 mt-8 ml-2 w-full">Device Details</p>
+        {/* Environment Details Section */}
+        <p
+          id="see-details"
+          className="text-gray-900 font-bold text-xl mb-4 mt-8 ml-2 w-full"
+        >
+          Environment Details
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-4 w-full max-w-4xl">
           {details.map((device, index) => (
-            <DeviceCard key={index} device={device} />
+            <DeviceCard key={index} device={device} mode="detail" />
           ))}
         </div>
 
         {/* About Section */}
-        <p id="about" className="text-gray-800 font-medium text-xl mb-4 mt-8 ml-2 w-full">About Homify</p>
+        <p
+          id="about"
+          className="text-gray-900 font-bold text-xl mb-4 mt-8 ml-2 w-full"
+        >
+          About Homify
+        </p>
         <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-4xl">
-          <p className="text-gray-700 text-base">
-            Homify is your smart home assistant, designed to make your life easier and more efficient. 
-            With Homify, you can control and monitor your home devices seamlessly, all in one place. 
-            Our mission is to bring convenience and innovation to your fingertips.
+          <p className="text-gray-700 text-base leading-relaxed">
+            <strong>Homify</strong> is a smart home automation project that empowers users to control and monitor devices like lights, fans, and ACs remotely. Built using <strong>IoT technology</strong> and a <strong>Raspberry Pi</strong>, it offers real-time interaction with connected smart devices in your home.
+            <br />
+            <br />
+            <strong>Key Features:</strong>
+            <ul className="list-disc ml-6 mt-2">
+              <li>Remote device control with live status updates</li>
+              <li>Environmental monitoring via sensors</li>
+              <li>Responsive dashboard with interactive UI and image slider</li>
+            </ul>
+            <br />
+            <strong>Team Members:</strong><br />
+            Mayank Kumar Jha (<a href="mailto:IIB2024010@iiita.ac.in" target="_blank">IIB2024010</a>)<br />
+            Krish Dhaked (<a href="mailto:IIB2024008@iiita.ac.in" target="_blank">IIB2024008</a>)<br />
+            Himanshu Vitthalani (<a href="mailto:IIB2024009@iiita.ac.in" target="_blank">IIB202409</a>)<br />
+            Archee Jaiswal (<a href="mailto:IIB2024022@iiita.ac.in" target="_blank">IIB2024022</a>)
           </p>
         </div>
       </div>

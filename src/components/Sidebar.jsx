@@ -32,12 +32,9 @@ const Sidebar = () => {
           console.error(`Section with ID "${id}" not found.`);
         }
       }
-
-      // Collapse after scroll
       collapseSidebar();
     };
 
-    // If sidebar is collapsed, expand first, then navigate
     if (isCollapsed) {
       setShowIcons(true);
       setIsCollapsed(false);
@@ -85,8 +82,8 @@ const Sidebar = () => {
 
       {/* Sidebar Items */}
       {showIcons && (
-        <div className="bg-[#e6faf8a1] text-black flex flex-col rounded-b-2xl rounded-l-2xl mt-13 ml-10 mr-6 overflow-y-auto">
-          <nav className="flex flex-col flex-grow">
+        <div className="bg-[#b9e4dc] text-black flex flex-col rounded-b-2xl rounded-l-2xl mt-13 ml-10 mr-6 overflow-y-auto shadow-xl backdrop-blur-md">
+          <nav className="flex flex-col flex-grow p-3">
             <SidebarItem
               icon={Home}
               label="Home"
@@ -121,13 +118,14 @@ const Sidebar = () => {
 const SidebarItem = ({ icon: Icon, label, isCollapsed, onClick }) => {
   return (
     <div
-      className="flex items-center space-x-2 p-2 hover:bg-[#658d894c] cursor-pointer"
+      className="flex items-center space-x-3 p-3 rounded-xl hover:bg-[#9fdcd3] transition-colors duration-200 cursor-pointer"
       onClick={onClick}
     >
-      <Icon size={24} className="shrink-0" />
-      {!isCollapsed && <span className="text-lg">{label}</span>}
+      <Icon size={24} className="shrink-0 text-gray-700" />
+      {!isCollapsed && <span className="text-lg font-normal text-gray-800">{label}</span>}
     </div>
   );
 };
+
 
 export default Sidebar;
