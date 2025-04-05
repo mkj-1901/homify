@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const images = ["ac.png", "bulb.jpg", "fan.jpeg"];
+const images = ["ac.png", "test.jpg", "fan.jpeg"];
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
