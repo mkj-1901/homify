@@ -1,23 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
-const images = [
-  "/features/feature1.webp",
-  "/features/feature2.webp",
-  "/features/feature3.webp",
-];
+const images = ["ac.png", "bulb.jpg", "fan.jpeg"];
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    if (distance > 50) {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    } else if (distance < -50) {
+      setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-8 mb-6 relative rounded-2xl overflow-hidden shadow-lg">
+    <div
+      className="w-full max-w-4xl mx-auto mt-8 mb-6 relative rounded-2xl overflow-hidden shadow-lg"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <img
         src={images[currentIndex]}
         alt={`Feature ${currentIndex + 1}`}

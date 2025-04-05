@@ -82,8 +82,8 @@ const Sidebar = () => {
 
       {/* Sidebar Items */}
       {showIcons && (
-        <div className="bg-[#b9e4dc] text-black flex flex-col rounded-b-2xl rounded-l-2xl mt-13 ml-10 mr-6 overflow-y-auto shadow-xl backdrop-blur-md">
-          <nav className="flex flex-col flex-grow p-3">
+        <div className="bg-[#b9e4dc42] text-black flex flex-col rounded-b-2xl rounded-l-2xl mt-13 ml-10 mr-6 overflow-y-auto shadow-xl backdrop-blur-lg h-56 ">
+          <nav className="flex flex-col flex-grow p-2">
             <SidebarItem
               icon={Home}
               label="Home"
@@ -92,7 +92,7 @@ const Sidebar = () => {
             />
             <SidebarItem
               icon={Power}
-              label="Control Devices"
+              label="Control"
               isCollapsed={isCollapsed}
               onClick={() => handleNavigation("control-devices")}
             />

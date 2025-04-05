@@ -19,9 +19,10 @@ const details = [
   { name: "Temperature (°C)", icon: Thermometer, value: `${temperature}°C` },
 ];
 
+
 const App = () => {
   return (
-    <div className="flex bg-[#c3e8d6]">
+    <div className="flex bg-gradient-to-b from-[#c3e8d6] to-[#5c8689]">
       {/* Sidebar */}
       <Sidebar
         onScrollToSection={(sectionId) => {
