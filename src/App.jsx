@@ -22,7 +22,7 @@ const details = [
 
 const App = () => {
   return (
-    <div className="flex bg-gradient-to-b from-[#8771ea] via-[#d3cff8] to-[#8771ea] min-[]:h-screen relative">
+    <div className="flex bg-gradient-to-b from-[#a394e6] via-[#d3cff8] to-[#8771ea] min-[]:h-screen relative">
       {/* Sidebar */}
       <Sidebar
         onScrollToSection={(sectionId) => {
