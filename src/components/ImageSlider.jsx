@@ -1,38 +1,65 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const images = ["ac.png", "test.jpg", "fan.jpeg"];
+const images = ["1.png", "2.png", "3.png"]; // Add real image paths
 
 const ImageSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1); // Start from 1 (because of clone at beginning)
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const slideRef = useRef();
 
+  const totalImages = images.length;
+  const extendedImages = [images[totalImages - 1], ...images, images[0]];
 
-  const touchStartX = useRef(null);
-  const touchEndX = useRef(null);
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+    setIsTransitioning(true);
+  };
+
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
+
   const handleTouchMove = (e) => {
     touchEndX.current = e.touches[0].clientX;
   };
+
   const handleTouchEnd = () => {
     if (!touchStartX.current || !touchEndX.current) return;
     const distance = touchStartX.current - touchEndX.current;
     if (distance > 50) {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+      goToSlide(currentIndex + 1);
     } else if (distance < -50) {
-      setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+      goToSlide(currentIndex - 1);
     }
     touchStartX.current = null;
     touchEndX.current = null;
   };
 
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
 
+  // Auto slide every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+      goToSlide(currentIndex + 1);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentIndex]);
+
+  // Handle looping with transition
+  useEffect(() => {
+    if (currentIndex === 0) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(totalImages);
+      }, 1000);
+    } else if (currentIndex === totalImages + 1) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(1);
+      }, 1000);
+    }
+  }, [currentIndex]);
 
   return (
     <div
@@ -41,18 +68,35 @@ const ImageSlider = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <img
-        src={images[currentIndex]}
-        alt={`Feature ${currentIndex + 1}`}
-        className="w-full h-[28rem] object-cover transition-all duration-500" // ⬅️ Increased height to 28rem (448px)
-      />
+      <div
+        ref={slideRef}
+        className="flex"
+        style={{
+          width: `${extendedImages.length * 100}%`,
+          transform: `translateX(-${currentIndex * (100 / extendedImages.length)}%)`,
+          transition: isTransitioning ? "transform 0.8s ease-in-out" : "none",
+        }}
+        onTransitionEnd={() => setIsTransitioning(true)} // Re-enable transition after jump
+      >
+        {extendedImages.map((src, index) => (
+          <img
+            key={index}
+            src={src}
+            alt={`Slide ${index}`}
+            className="w-full h-[28rem] object-cover flex-shrink-0"
+            style={{ width: `${100 / extendedImages.length}%` }}
+          />
+        ))}
+      </div>
+
+      {/* Indicator Dots */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {images.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => goToSlide(index + 1)} // +1 because first is clone
             className={`w-3 h-3 rounded-full ${
-              currentIndex === index ? "bg-green-600" : "bg-gray-300"
+              currentIndex === index + 1 ? "bg-green-600" : "bg-gray-300"
             }`}
           ></button>
         ))}
