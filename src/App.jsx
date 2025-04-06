@@ -96,7 +96,7 @@ const App = () => {
             <strong>Team Members:</strong><br />
             Mayank Kumar Jha (<a href="mailto:IIB2024010@iiita.ac.in" target="_blank">IIB2024010</a>)<br />
             Krish Dhaked (<a href="mailto:IIB2024008@iiita.ac.in" target="_blank">IIB2024008</a>)<br />
-            Himanshu Vitthalani (<a href="mailto:IIB2024009@iiita.ac.in" target="_blank">IIB202409</a>)<br />
+            Himanshu Vitthalani (<a href="mailto:IIB2024009@iiita.ac.in" target="_blank">IIB2024009</a>)<br />
             Archee Jaiswal (<a href="mailto:IIB2024022@iiita.ac.in" target="_blank">IIB2024022</a>)
           </p>
         </div>
