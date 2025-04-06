@@ -72,7 +72,7 @@ const App = () => {
         <p className="text-gray-900 font-bold text-2xl mb-4 mt-8 ml-2 w-full">
           About Homify
         </p>
-        <div className="bg-[#f7d5f9] border-1 border-[#8771ea] p-6 rounded-lg shadow-md w-full max-w-4xl">
+        <div className="bg-[#ffe5ec] border-1 border-[#8771ea] p-6 rounded-lg shadow-md w-full max-w-4xl">
           <p className="text-gray-700 text-base leading-relaxed">
             <strong>Homify</strong> is a smart home automation project that
             empowers users to control and monitor devices like lights, fans, and
