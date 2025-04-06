@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const images = ["1.png", "2.png", "3.png"]; // Add real image paths
+const images = ["1.png", "3.png", "2.png"]; // Add real image paths
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(1); // Start from 1 (because of clone at beginning)
