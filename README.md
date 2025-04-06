@@ -55,7 +55,7 @@ Smart Homify is an intuitive smart home automation dashboard that lets users con
 Open terminal/bash
 
  - ### Clone the repository
-      git clone https://github.com/your-username/smart-homify.git
+      git clone https://github.com/mkj-1901/smart-homify.git
    
       cd smart-homify
     
