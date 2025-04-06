@@ -96,7 +96,7 @@ const ImageSlider = () => {
             key={index}
             onClick={() => goToSlide(index + 1)} // +1 because first is clone
             className={`w-3 h-3 rounded-full ${
-              currentIndex === index + 1 ? "bg-[#8771ea]" : "bg-[#d3cff8]"
+              currentIndex === index + 1 ? "bg-green-600" : "bg-[#d3cff8]"
             }`}
           ></button>
         ))}

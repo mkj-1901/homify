@@ -4,9 +4,9 @@ import { Lightbulb, Fan, Thermometer } from "lucide-react";
 import "tailwindcss"
 
 const devices = [
-  { name: "Living Room Light", icon: Lightbulb, isOn: true },
+  { name: "Living Room Light", icon: Lightbulb, isOn: false },
   { name: "Bedroom Fan", icon: Fan, isOn: false },
-  { name: "AC Unit", icon: Thermometer, isOn: true },
+  { name: "AC Unit", icon: Thermometer, isOn: false },
 ];
 
 const DeviceGrid = () => {

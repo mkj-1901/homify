@@ -7,9 +7,9 @@ import { Lightbulb, Fan, Thermometer, AirVent, Sun } from "lucide-react";
 const userName = "Dr. Ranjana Vyas"
 // Device and Environment Data
 const devices = [
-  { name: "Living Room Light", icon: Lightbulb, isOn: true },
+  { name: "Living Room Light", icon: Lightbulb, isOn: false },
   { name: "Bedroom Fan", icon: Fan, isOn: false },
-  { name: "AC Unit", icon: AirVent, isOn: true },
+  { name: "AC Unit", icon: AirVent, isOn: false },
 ];
 
 const lightIntensity = Math.floor(Math.random() * 100); // 0 to 100 %
@@ -22,7 +22,7 @@ const details = [
 
 const App = () => {
   return (
-    <div className="flex bg-gradient-to-b from-[#c3e8d6] via-[#d3cff8] to-[#8771ea] min-[]:h-screen relative">
+    <div className="flex bg-gradient-to-b from-[#c3e8d6] via-[#d3cff8] to-[#9c8fcc] min-[]:h-screen relative">
       {/* Sidebar */}
       <Sidebar
         onScrollToSection={(sectionId) => {
