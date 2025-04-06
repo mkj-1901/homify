@@ -22,7 +22,7 @@ const details = [
 
 const App = () => {
   return (
-    <div className="flex bg-gradient-to-b from-[#a394e6] via-[#d3cff8] to-[#8771ea] min-[]:h-screen relative">
+    <div className="flex bg-gradient-to-b from-[#c3e8d6] via-[#d3cff8] to-[#8771ea] min-[]:h-screen relative">
       {/* Sidebar */}
       <Sidebar
         onScrollToSection={(sectionId) => {
@@ -39,13 +39,13 @@ const App = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col items-center min-h-screen mt-16 p-6">
-        <h1 className="text-4xl font-bold ml-2 w-full">Homify</h1>
-        <p className="text-gray-800 mb-6 mt-3 ml-2 w-full">
-          Guten Morgen, {userName}!
-        </p>
+        <div className="flex-1 flex flex-col items-center min-h-screen mt-16 p-6">
+          <h1 className="text-4xl font-bold ml-2 w-full text-[#0b0615]">Homify</h1>
+          <p className="text-gray-800 mb-6 mt-3 ml-2 w-full">
+            Guten Morgen, {userName}!
+          </p>
 
-        {/* Image Slider */}
+          {/* Image Slider */}
         <ImageSlider />
         <br id="control-devices" />
         {/* Device Control Section */}
