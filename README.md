@@ -1,13 +1,4 @@
-<table>
-  <tr>
-    <td>
-      <img src="./assets/favicon.webp" alt="Smart Homify Logo" width="60" />
-    </td>
-    <td style="padding-left: 10px;">
-      <h1>Smart Homify</h1>
-    </td>
-  </tr>
-</table>
+# 🏠 Homify
 
 
 [Live Demo 🚀](https://smart-homify.netlify.app/)
