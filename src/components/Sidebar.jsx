@@ -118,10 +118,10 @@ const Sidebar = () => {
 const SidebarItem = ({ icon: Icon, label, isCollapsed, onClick }) => {
   return (
     <div
-      className="flex items-center space-x-3 p-3 rounded-xl hover:bg-[#9fdcd3] transition-colors duration-200 cursor-pointer"
+      className="flex items-center space-x-3 p-3 rounded-xl hover:bg-[#d3cff8] transition-colors duration-200 cursor-pointer"
       onClick={onClick}
     >
-      <Icon size={24} className="shrink-0 text-gray-700" />
+      <Icon size={24} className="shrink-0 text-gray-800" />
       {!isCollapsed && <span className="text-lg font-normal text-gray-800">{label}</span>}
     </div>
   );

@@ -22,7 +22,7 @@ const details = [
 
 const App = () => {
   return (
-    <div className="flex bg-gradient-to-b from-[#c3e8d6] to-[#5c8689]">
+    <div className="flex bg-gradient-to-b from-[#8771ea] via-[#d3cff8] to-[#8771ea] min-[]:h-screen relative">
       {/* Sidebar */}
       <Sidebar
         onScrollToSection={(sectionId) => {
@@ -41,7 +41,7 @@ const App = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center min-h-screen mt-16 p-6">
         <h1 className="text-4xl font-bold ml-2 w-full">Homify</h1>
-        <p className="text-gray-600 mb-6 mt-3 ml-2 w-full">
+        <p className="text-gray-800 mb-6 mt-3 ml-2 w-full">
           Guten Morgen, {userName}!
         </p>
 
@@ -72,7 +72,7 @@ const App = () => {
         <p className="text-gray-900 font-bold text-2xl mb-4 mt-8 ml-2 w-full">
           About Homify
         </p>
-        <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-4xl">
+        <div className="bg-[#f7d5f9] border-1 border-[#8771ea] p-6 rounded-lg shadow-md w-full max-w-4xl">
           <p className="text-gray-700 text-base leading-relaxed">
             <strong>Homify</strong> is a smart home automation project that
             empowers users to control and monitor devices like lights, fans, and

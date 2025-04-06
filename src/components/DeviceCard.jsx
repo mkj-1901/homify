@@ -6,7 +6,7 @@ const DeviceCard = ({ device, mode = "control" }) => {
 
   if (mode === "detail") {
     return (
-      <div className="p-4 bg-[#fff] border-2 border-[#8ed5b1] rounded-3xl flex justify-between items-center w-full">
+      <div className="p-4 bg-[#f7d5f9] border-1 border-[#8771ea] rounded-3xl flex justify-between items-center w-full">
         {/* Value on the left */}
         <div className="text-left">
           <p className="text-2xl font-bold text-gray-800">{device.value !== null ? device.value : "--"}</p>
@@ -23,7 +23,7 @@ const DeviceCard = ({ device, mode = "control" }) => {
 
   // Default mode: control
   return (
-    <div className="p-4 bg-[#fff] border-2 border-[#8ed5b1] rounded-3xl flex flex-col items-center w-full">
+    <div className="p-4 bg-[#f7d5f9] border-1 border-[#8771ea] rounded-3xl flex flex-col items-center w-full">
       {IconComponent && <IconComponent className={`w-12 h-12 ${isOn ? "text-blue-500" : "text-gray-500"}`} />}
       <h3 className="mt-2 font-semibold">{device.name}</h3>
       <div className="mt-3 flex items-center">
