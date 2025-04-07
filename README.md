@@ -20,9 +20,9 @@ Smart Homify is an intuitive smart home automation dashboard that lets users con
 ## 📸 Demo
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0f2c2f8e-f706-4d6e-a9f9-a9659962ccc3" width="200"/>
-  <img src="https://github.com/user-attachments/assets/782943dc-bddb-4ac3-b0c0-54c15fb83622" width="200"/>
-  <img src="https://github.com/user-attachments/assets/40b43a78-2d81-4f77-b434-7d7c6f061638" width="200"/>
+  <img src="https://github.com/user-attachments/assets/65ccd121-aaff-43e6-9ff6-7afa4c26723e" width="200"/>
+  <img src="https://github.com/user-attachments/assets/61cb8709-f44e-474d-966f-1c9cba746de2" width="200"/>
+  <img src="https://github.com/user-attachments/assets/4816aa97-3168-4b4a-8aad-8d461a14c101" width="200"/>
 </p>
 
 
