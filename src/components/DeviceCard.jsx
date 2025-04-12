@@ -1,27 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { ref, get, set } from "firebase/database";
 
-const toggleDevice = async (deviceId, action) => {
-  try {
-    const response = await fetch("http://localhost:5000/api/devices/toggle", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ deviceId, action }),
-    });
-    const data = await response.json();
-    console.log(data.message);
-  } catch (err) {
-    console.error("Toggle failed:", err);
-  }
-};
-
-const DeviceCard = ({ device, mode = "control" }) => {
+const DeviceCard = ({ device, mode = "control", db }) => {
   const [isOn, setIsOn] = useState(device.isOn || false);
   const IconComponent = device.icon;
 
-  const handleToggle = () => {
+  // Sync with Firebase if data changes
+  useEffect(() => {
+    setIsOn(device.isOn || false);
+  }, [device.isOn]);
+
+  const handleToggle = async () => {
     const newState = !isOn;
     setIsOn(newState);
-    toggleDevice(device.id, newState ? "ON" : "OFF");
+
+    try {
+      const homeRef = ref(db, "homeData");
+      const snapshot = await get(homeRef);
+      const data = snapshot.val();
+
+      if (data && Array.isArray(data.devices)) {
+        const updatedDevices = data.devices.map((d) =>
+          d.name === device.name ? { ...d, isOn: newState } : d
+        );
+
+        await set(homeRef, {
+          ...data,
+          devices: updatedDevices,
+        });
+
+        console.log(`Toggled ${device.name} to ${newState ? "ON" : "OFF"}`);
+      }
+    } catch (err) {
+      console.error("Error toggling device:", err);
+    }
   };
 
   if (mode === "detail") {
