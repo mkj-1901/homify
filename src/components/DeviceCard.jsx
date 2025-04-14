@@ -1,39 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { ref, get, set } from "firebase/database";
 
-const DeviceCard = ({ device, mode = "control", db }) => {
+const DeviceCard = ({ device, mode = "control", onToggle }) => {
   const [isOn, setIsOn] = useState(device.isOn || false);
   const IconComponent = device.icon;
 
-  // Sync with Firebase if data changes
+  // Keep local state in sync with parent
   useEffect(() => {
     setIsOn(device.isOn || false);
   }, [device.isOn]);
 
-  const handleToggle = async () => {
+  const handleToggle = () => {
     const newState = !isOn;
-    setIsOn(newState);
-
-    try {
-      const homeRef = ref(db, "homeData");
-      const snapshot = await get(homeRef);
-      const data = snapshot.val();
-
-      if (data && Array.isArray(data.devices)) {
-        const updatedDevices = data.devices.map((d) =>
-          d.name === device.name ? { ...d, isOn: newState } : d
-        );
-
-        await set(homeRef, {
-          ...data,
-          devices: updatedDevices,
-        });
-
-        console.log(`Toggled ${device.name} to ${newState ? "ON" : "OFF"}`);
-      }
-    } catch (err) {
-      console.error("Error toggling device:", err);
-    }
+    setIsOn(newState); // Optional: for immediate visual feedback
+    onToggle && onToggle(device.name, newState); // Notify parent to update
   };
 
   if (mode === "detail") {
