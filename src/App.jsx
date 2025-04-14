@@ -61,19 +61,6 @@ const App = () => {
         console.error("Error writing data:", error);
       });
   };
-  const handleDeviceToggle = (deviceName, newState) => {
-    const updatedDevices = devices.map((d) =>
-      d.name === deviceName ? { ...d, isOn: newState } : d
-    );
-    setDevices(updatedDevices); // This will trigger putData via useEffect
-  };
-  
-  useEffect(() => {
-    // Example usage of putData to sync data when devices change
-    if (devices.length > 0) {
-      putData();
-    }
-  }, [devices, lightIntensity, temperature]);
 
   const details = [
     { name: "Light Intensity", icon: Sun, value: `${lightIntensity}%` },
