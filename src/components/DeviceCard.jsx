@@ -133,12 +133,15 @@ const DeviceCard = ({ device, mode = "control", db }) => {
             min="0"
             max="100"
             value={brightness}
-            onChange={handleBrightnessChange}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer relative
-        accent-green-500
-        "
+            onChange={isOn ? handleBrightnessChange : undefined} // Only allow changing when ON
+            disabled={!isOn} // Disable slider when light is OFF
+            className={`w-full h-2 rounded-lg appearance-none relative
+              ${isOn ? "bg-gray-200 accent-green-500 cursor-pointer" : "bg-gray-300 accent-gray-400 cursor-not-allowed opacity-50"}
+            `}
             style={{
-              background: `linear-gradient(to right, #22c55e 0%, #22c55e ${brightness}%, #e5e7eb ${brightness}%, #e5e7eb 100%)`,
+              background: isOn
+                ? `linear-gradient(to right, #22c55e 0%, #22c55e ${brightness}%, #e5e7eb ${brightness}%, #e5e7eb 100%)`
+                : undefined,
             }}
           />
           {/* Custom styles for thumb */}
@@ -149,16 +152,16 @@ const DeviceCard = ({ device, mode = "control", db }) => {
               width: 20px;
               border-radius: 50%;
               background: white;
-              border: 3px solid #22c55e;
+              border: 3px solid ${isOn ? "#22c55e" : "#a1a1aa"};
               cursor: pointer;
-              margin-top: -1px; /* Correct margin for 8px track */
+              margin-top: -1px;
             }
             input[type="range"]::-moz-range-thumb {
               height: 20px;
               width: 20px;
               border-radius: 50%;
               background: white;
-              border: 3px solid #22c55e;
+              border: 3px solid ${isOn ? "#22c55e" : "#a1a1aa"};
               cursor: pointer;
             }
           `}</style>
