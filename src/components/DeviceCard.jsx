@@ -124,7 +124,7 @@ const DeviceCard = ({ device, mode = "control", db }) => {
 
       {/* BRIGHTNESS SLIDER */}
       {device.name.toLowerCase().includes("light") && (
-        <div className="mt-4 w-full">
+        <div className="mt-4 w-full px-6">
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Brightness: {brightness}%
           </label>
