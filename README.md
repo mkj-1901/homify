@@ -42,36 +42,6 @@ Smart Homify is an intuitive smart home automation dashboard that lets users con
 - [Archee Jaiswal](https://github.com/archee_j)
 
 ---
-
-## 🔒 Firebase Security & Setup (Important)
-
-To ensure secure access and prevent "Permission Denied" errors, you must configure Firebase correctly:
-
-### 1. Enable Anonymous Authentication
-Because the database rules require authentication, you must enable Anonymous Sign-in:
-1. Go to your [Firebase Console](https://console.firebase.google.com/).
-2. Navigate to **Build > Authentication**.
-3. Click on the **Sign-in method** tab.
-4. Click **Add new provider** and select **Anonymous**.
-5. Enable it and click **Save**.
-
-### 2. Update Realtime Database Security Rules
-Your Realtime Database should only allow read/write access to authenticated users:
-1. Navigate to **Build > Realtime Database** in the Firebase Console.
-2. Go to the **Rules** tab.
-3. Replace the existing (or expired) rules with:
-```json
-{
-  "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null"
-  }
-}
-```
-4. Click **Publish**.
-
----
-
 ## 📖 Firebase Fetching Methods Explained
 
 In this project, data is fetched and synced using the modern Firebase Modular SDK (v9+). 
@@ -86,8 +56,8 @@ In this project, data is fetched and synced using the modern Firebase Modular SD
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/mkj-1901/smart-homify.git
-   cd smart-homify
+   [git clone https://github.com/mkj-1901/smart-homify.git](https://github.com/mkj-1901/homify.git)
+   cd homify
    ```
 
 2. **Install dependencies:**
