@@ -4,7 +4,8 @@ import DeviceCard from "./components/DeviceCard";
 import ImageSlider from "./components/ImageSlider";
 import { Lightbulb, Fan, Thermometer, AirVent, Sun } from "lucide-react";
 import { getDatabase, ref, set, onValue } from "firebase/database";
-import { app } from "./firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { app, auth } from "./firebase";
 
 const db = getDatabase(app);
 
@@ -21,25 +22,37 @@ const App = () => {
   const [lightIntensity, setLightIntensity] = useState(0);
   const [temperature, setTemperature] = useState(0);
 
-  // Realtime listener
+  // Realtime listener, waiting for auth to complete
   useEffect(() => {
-    const homeRef = ref(db, "homeData");
+    let unsubscribeDB;
 
-    const unsubscribe = onValue(homeRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        setDevices(
-          (data.devices || []).map((d) => ({
-            ...d,
-            icon: iconMap[d.name] || Lightbulb,
-          }))
-        );
-        setLightIntensity(data.lightIntensity);
-        setTemperature(data.temperature);
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is authenticated anonymously, safe to fetch data
+        const homeRef = ref(db, "homeData");
+
+        unsubscribeDB = onValue(homeRef, (snapshot) => {
+          const data = snapshot.val();
+          if (data) {
+            setDevices(
+              (data.devices || []).map((d) => ({
+                ...d,
+                icon: iconMap[d.name] || Lightbulb,
+              }))
+            );
+            setLightIntensity(data.lightIntensity);
+            setTemperature(data.temperature);
+          }
+        }, (error) => {
+          console.error("Firebase Read Error:", error);
+        });
       }
     });
 
-    return () => unsubscribe();
+    return () => {
+      if (unsubscribeDB) unsubscribeDB();
+      unsubscribeAuth();
+    };
   }, []);
 
   const putData = () => {
@@ -122,7 +135,7 @@ const App = () => {
           About Homify
         </p>
         <div className="bg-[#ffe5ec] border-1 border-[#8771ea] p-6 rounded-lg shadow-md w-full max-w-4xl">
-          <p className="text-gray-700 text-base leading-relaxed">
+          <div className="text-gray-700 text-base leading-relaxed">
             <strong>Homify</strong> is a smart home automation project that
             empowers users to control and monitor devices like lights, fans, and
             ACs remotely. Built using <strong>IoT technology</strong> and a{" "}
@@ -159,7 +172,7 @@ const App = () => {
               IIB2024022
             </a>
             )
-          </p>
+          </div>
         </div>
       </div>
     </div>
