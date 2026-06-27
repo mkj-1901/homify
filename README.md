@@ -56,7 +56,7 @@ In this project, data is fetched and synced using the modern Firebase Modular SD
 
 1. **Clone the repository:**
    ```bash
-   [git clone https://github.com/mkj-1901/smart-homify.git](https://github.com/mkj-1901/homify.git)
+   git clone https://github.com/mkj-1901/smart-homify.git
    cd homify
    ```
 
